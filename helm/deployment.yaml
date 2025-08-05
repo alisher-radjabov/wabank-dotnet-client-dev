@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-dotnet-deploy
+  namespace: dotnet-dev
+  labels:
+    app: client-dotnet-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client-dotnet-deploy
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: client-dotnet-deploy
+    spec:
+      containers:
+      - name: client-dotnet-deploy
+        image: wabankcontainerregistry.azurecr.io/dotnet-client-dev:latest
+        env:
+        - name: UserId
+          valueFrom:
+            secretKeyRef:
+              name: pg-client-secret
+              key: UserId
+        - name: Password
+          valueFrom:
+            secretKeyRef:
+              name: pg-client-secret
+              key: Password
+        - name: Server
+          valueFrom:
+            configMapKeyRef:
+              name: pg-client-configmap
+              key: Server
+        - name: Database
+          valueFrom:
+            configMapKeyRef:
+              name: pg-client-configmap
+              key: Database
+        - name: Port
+          valueFrom:
+            configMapKeyRef:
+              name: pg-client-configmap
+              key: Port
+      imagePullSecrets:
+      - name: acr-secret-dev

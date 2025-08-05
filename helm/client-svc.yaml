@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: client-dotnet-deploy
+  name: client-svc
+  namespace: dotnet-dev
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: client-dotnet-deploy
+  type: LoadBalancer
