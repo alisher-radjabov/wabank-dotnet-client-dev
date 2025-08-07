@@ -23,6 +23,8 @@ spec:
       containers:
       - name: client-dotnet-deploy
         image: wabankcontainerregistry.azurecr.io/dotnet-client-dev:latest
+        ports:
+        - containerPort: 8080
         env:
         - name: UserId
           valueFrom:

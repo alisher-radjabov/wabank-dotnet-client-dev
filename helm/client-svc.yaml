@@ -7,9 +7,9 @@ metadata:
   namespace: dotnet-dev
 spec:
   ports:
-  - port: 80
-    protocol: TCP
-    # targetPort: 7182
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
   selector:
     app: client-dotnet-deploy
   type: LoadBalancer
