@@ -9,7 +9,7 @@ spec:
   ports:
   - port: 80
     protocol: TCP
-    targetPort: 5231
+    targetPort: 7182
   selector:
     app: client-dotnet-deploy
   type: LoadBalancer
