@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-stage-configmap
+  namespace: dotnet-stage
+data:
+  hostname: redis-back.redis.cache.windows.net
+  port: "6380"

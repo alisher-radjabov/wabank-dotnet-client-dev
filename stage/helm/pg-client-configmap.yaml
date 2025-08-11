@@ -2,8 +2,8 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: pg-client-configmap
-  namespace: dotnet-dev
+  namespace: dotnet-stage
 data:
   Server: wabank-postgresql.postgres.database.azure.com
-  Database: dotnet-dev
+  Database: dotnet-stage
   Port: "5432"

@@ -53,5 +53,20 @@ spec:
             configMapKeyRef:
               name: pg-client-configmap
               key: Port
+        - name: port
+          valueFrom:
+            configMapKeyRef:
+              name: redis-dev-configmap
+              key: port
+        - name: hostname
+          valueFrom:
+            configMapKeyRef:
+              name: redis-dev-configmap
+              key: port
+        - name: password
+          valueFrom:
+            secretKeyRef:
+              name: redis-dev-secret
+              key: password
       imagePullSecrets:
       - name: acr-secret-dev
